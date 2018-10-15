@@ -6,8 +6,7 @@ pipeline {
     }
     stages {
         stage ('Build Docker Images') {
-            parallel true
-            stages {
+            parallel {
                 stage('xillio/jenkins') {
                     steps {
                         sh 'docker build --pull -t xillio/jenkins docker-jenkins'
