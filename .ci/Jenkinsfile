@@ -7,8 +7,8 @@ pipeline {
     stages {
         stage ('Build Docker Images') {
             steps {
-                sh 'cd docker-jenkins && docker build --pull -t scriptinator/jenkins .'
-                sh 'cd docker-jenkins-agent && docker build --pull -t scriptinator/jenkins-agent .'
+                sh 'cd docker-jenkins && docker build --pull -t xillio/jenkins .'
+                sh 'cd docker-jenkins-agent && docker build --pull -t xillio/jenkins-agent .'
             }
         }
         stage ('Push Docker Image') {
@@ -20,8 +20,8 @@ pipeline {
             }
             steps {
                 sh 'docker login --username "$DOCKER_CREDENTIALS_USR" --password "$DOCKER_CREDENTIALS_PSW"'
-                sh 'docker push scriptinator/jenkins'
-                sh 'docker push scriptinator/jenkins-agent'
+                sh 'docker push xillio/jenkins'
+                sh 'docker push xillio/jenkins-agent'
             }
         }
     }
