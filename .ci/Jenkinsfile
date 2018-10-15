@@ -6,9 +6,18 @@ pipeline {
     }
     stages {
         stage ('Build Docker Images') {
-            steps {
-                sh 'cd docker-jenkins && docker build --pull -t xillio/jenkins .'
-                sh 'cd docker-jenkins-agent && docker build --pull -t xillio/jenkins-agent .'
+            parallel true
+            stages {
+                stage('xillio/jenkins') {
+                    steps {
+                        sh 'docker build --pull -t xillio/jenkins docker-jenkins'
+                    }
+                }
+                stage('xillio/jenkins-agent') {
+                    steps {
+                        sh 'docker build --pull -t xillio/jenkins-agent docker-jenkins-agent'
+                    }
+                }
             }
         }
         stage ('Push Docker Image') {
