@@ -13,7 +13,7 @@ pipeline {
         }
         stage ('Push Docker Image') {
             environment {
-                DOCKER_CREDENTIALS = credentials('fa2b99dc-21fa-478b-8e89-6dda3f877194')
+                DOCKER_CREDENTIALS = credentials('be60cbad-d54b-4f95-9f52-0a1615188699')
             }
             when {
                 branch 'master'
