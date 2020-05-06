@@ -6,6 +6,7 @@ WORKDIR /var/jenkins_home
 RUN apt-get update
 
 # Install Java, curl and git
+ENV DEBIAN_FRONTEND=noninteractive 
 RUN  apt-get install -y default-jdk curl git
 
 # Install Docker
