@@ -1,4 +1,4 @@
-FROM ubuntu
+FROM ubuntu:bionic
 
 USER root
 WORKDIR /var/jenkins_home
